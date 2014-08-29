@@ -22,7 +22,8 @@
 			targetElements.each(function(index){
 				var imgElement = $(this);
 				imgElement.css({
-					display: "none"
+					display: "none",
+					margin: 0
 				})
 
 				var preload = new Image();
