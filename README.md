@@ -1,7 +1,7 @@
 jQuery.ResponsiveImageCropper
 ===========================
 
-Image will be crop. jQuery plugin page is [here](http://plugins.jquery.com/responsiveimagecropper/)
+Image will be cropped. jQuery plugin page is [here](http://plugins.jquery.com/responsiveimagecropper/)
 
 
 Usage

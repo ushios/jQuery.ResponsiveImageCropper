@@ -15,7 +15,7 @@
   "bugs": "https://github.com/ushios/jQuery.ResponsiveImageCropper/issues",
   "docs": "https://github.com/ushios/jQuery.ResponsiveImageCropper/blob/master/README.md",
   "homepage": "https://github.com/ushios/jQuery.ResponsiveImageCropper",
-  "description": "image will cropped.",
+  "description": "image will be cropped.",
   "keywords": ["image", "crop", "responsive"],
   "dependencies": {
     "jquery": ">=2.1.1"
