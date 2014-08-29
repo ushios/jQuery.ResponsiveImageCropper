@@ -20,10 +20,24 @@
 			var _this = this;
 			this.targetElements = new Array();
 			targetElements.each(function(index){
-				_this.targetElements.push($(this));
+				var imgElement = $(this);
+				imgElement.css({
+					display: "none"
+				})
+
+				var preload = new Image();
+
+				preload.onload = function(){
+					imgElement.css({
+						position: "absolute",
+						display: "block"
+					});
+					_this.targetElements.push(imgElement);
+					_this.croppingImageElement(imgElement);
+				}
+				preload.src = imgElement.attr('src');
 			});
 
-			this.onResizeCallback();
 			$(window).resize(function(event){
 				_this.onResizeCallback();
 			});
@@ -35,19 +49,83 @@
 		onResizeCallback: function(){
 			var _this = this;
 			jQuery.each(this.targetElements, function(index){
-				var imgElement = jQuery(this);
-				var outside = imgElement.parent();
-				imgElement.data('crop-image-outside', outside);
-				_this.desideImageWidth(imgElement);
+				var imgElement = this;
+				_this.croppingImageElement(imgElement);
 			});
+		},
+
+		/**
+		 * crop image
+		 */
+		croppingImageElement: function(imgElement){
+			var outside, inner, outer;
+
+			if (imgElement.data('crop-image-wrapped')){
+				outside = imgElement.data('crop-image-outside');
+				outer = imgElement.data('crop-image-outer');
+				inner = imgElement.data('crop-image-inner');
+
+			}else{
+				outside = imgElement.parent();
+				outer = jQuery("<div>");
+				inner = jQuery("<div>");
+
+				outer.css({
+					overflow: "hidden"
+				});
+
+				inner.css({
+					position: "relative",
+					overflow: "hidden"
+				});
+
+				// append elements.
+				imgElement.after(outer);
+				outer.append(inner);
+				inner.append(imgElement);
+
+				// set datas.
+				imgElement.data('crop-image-outside', outside);
+				imgElement.data('crop-image-outer', outer);
+				imgElement.data('crop-image-inner', inner);
+				imgElement.data('crop-image-wrapped', true);
+			}
+
+			this.desideImageSizes(imgElement);
 		},
 
 		/**
 		 * Deside image width.
 		 */
-		desideImageWidth: function(imgElement){
+		desideImageSizes: function(imgElement){
 			var outside = imgElement.data('crop-image-outside');
+			var inner = imgElement.data('crop-image-inner');
+			var ratio = imgElement.data('crop-image-ratio')
+
+			if (!ratio){
+				ratio = 1;
+			}
+
+			var height = outside.width() * ratio;
+			inner.height(height);
+
 			imgElement.width(outside.width());
+			imgElement.height('auto');
+			imgElement.css({
+				position: "absolute",
+				left: 0,
+				top: - (imgElement.height() - outside.height()) /2
+			});
+
+			if ( height > imgElement.height() ){
+				imgElement.width('auto');
+				imgElement.height(height);
+				imgElement.css({
+					position: "absolute",
+					left: - (imgElement.width() - outside.width()) /2,
+					top: 0
+				});
+			}
 		},
 
 		/**
