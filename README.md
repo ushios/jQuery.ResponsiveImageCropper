@@ -1,7 +1,7 @@
-jQuery.ResponsiveTopScreen
+jQuery.ResponsiveImageCropper
 ===========================
 
-Change image tag to fullscreen. jQuery plugin page is [here](http://plugins.jquery.com/responsivetopscreen/)
+Image will be crop. jQuery plugin page is [here](https://github.com/ushios/jQuery.ResponsiveImageCropper)
 
 
 Usage
@@ -9,16 +9,14 @@ Usage
 
 ##### html
     <section id="top-screen">
-	    <img src="http://placekitten.com/2500/1200" data-original-width="2500" data-original-height="1200" />
+        <img class="crop" src="http://placekitten.com/2500/1200" data-crop-image-ratio="0.5" />
     </section>
 
 ##### javascript
 
     <script type="text/javascript">
     $(function(){
-        $("#top-screen").responsiveTopScreen({
-            screenFilterImage: "/images/gradiate.png" // optional, default undefined
-        });
+        $("img.crop").responsiveImageCropper();
     });
     </script>
 
@@ -26,11 +24,7 @@ Usage
 Options
 --------
 
-
-### optional
-
-###### screenFilterImage
-In sample. gradiate.png will be overlie on placekitten's image. 
+N/A
 
 ---
 
