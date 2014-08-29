@@ -22,7 +22,7 @@
 			targetElements.each(function(index){
 				var imgElement = $(this);
 				imgElement.css({
-					display: "none",
+					display: "none"
 				})
 
 				var preload = new Image();
@@ -30,8 +30,7 @@
 				preload.onload = function(){
 					imgElement.css({
 						position: "absolute",
-						display: "block",
-						padding: "padding"
+						display: "block"
 					});
 					_this.targetElements.push(imgElement);
 					_this.croppingImageElement(imgElement);
@@ -74,6 +73,11 @@
 					overflow: "hidden",
 					margin: imgElement.css("margin"),
 					padding: imgElement.css("padding")
+				});
+
+				imgElement.css({
+					margin: 0,
+					padding: 0
 				});
 
 				inner.css({
