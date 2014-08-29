@@ -1,0 +1,23 @@
+{
+  "name": "responsiveimagecropper",
+  "version": "0.0.1",
+  "title": "jQuery.ResponsiveImageCropper",
+  "author": {
+    "name": "Ushio Shugo",
+    "url": "http://ushio.me"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "bugs": "https://github.com/ushios/jQuery.ResponsiveImageCropper/issues",
+  "docs": "https://github.com/ushios/jQuery.ResponsiveImageCropper/blob/master/README.md",
+  "homepage": "https://github.com/ushios/jQuery.ResponsiveImageCropper",
+  "description": "image will cropped.",
+  "keywords": ["image", "crop", "responsive"],
+  "dependencies": {
+    "jquery": ">=2.1.1"
+  }
+}
