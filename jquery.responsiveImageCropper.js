@@ -23,7 +23,6 @@
 				var imgElement = $(this);
 				imgElement.css({
 					display: "none",
-					margin: 0
 				})
 
 				var preload = new Image();
@@ -31,7 +30,8 @@
 				preload.onload = function(){
 					imgElement.css({
 						position: "absolute",
-						display: "block"
+						display: "block",
+						padding: "padding"
 					});
 					_this.targetElements.push(imgElement);
 					_this.croppingImageElement(imgElement);
@@ -70,9 +70,10 @@
 				outside = imgElement.parent();
 				outer = jQuery("<div>");
 				inner = jQuery("<div>");
-
 				outer.css({
-					overflow: "hidden"
+					overflow: "hidden",
+					margin: imgElement.css("margin"),
+					padding: imgElement.css("padding")
 				});
 
 				inner.css({
