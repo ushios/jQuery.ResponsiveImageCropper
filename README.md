@@ -24,6 +24,13 @@ Options
 
 N/A
 
+Data attribtues
+---------------
+
+### data-crop-image-ratio
+
+When `data-crop-image-ratio="1"` the cropped image will be square. `data-crop-image-ratio="0.5"` the cropped image height will be '50px' when width is '100px'
+
 ---
 
 Special thanks
