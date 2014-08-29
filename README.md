@@ -8,9 +8,7 @@ Usage
 ------
 
 ##### html
-    <section id="top-screen">
-        <img class="crop" src="http://placekitten.com/2500/1200" data-crop-image-ratio="0.5" />
-    </section>
+    <img class="crop" src="http://placekitten.com/2500/1200" data-crop-image-ratio="0.5" />
 
 ##### javascript
 
