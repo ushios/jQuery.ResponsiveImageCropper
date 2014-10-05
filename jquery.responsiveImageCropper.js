@@ -58,15 +58,13 @@
 		 * crop image
 		 */
 		croppingImageElement: function(imgElement){
-			var outside, inner, outer;
+			var inner, outer;
 
 			if (imgElement.data('crop-image-wrapped')){
-				outside = imgElement.data('crop-image-outside');
 				outer = imgElement.data('crop-image-outer');
 				inner = imgElement.data('crop-image-inner');
 
 			}else{
-				outside = imgElement.parent();
 				outer = jQuery("<div>");
 				inner = jQuery("<div>");
 				outer.css({
@@ -91,7 +89,6 @@
 				inner.append(imgElement);
 
 				// set datas.
-				imgElement.data('crop-image-outside', outside);
 				imgElement.data('crop-image-outer', outer);
 				imgElement.data('crop-image-inner', inner);
 				imgElement.data('crop-image-wrapped', true);
@@ -104,7 +101,7 @@
 		 * Deside image width.
 		 */
 		desideImageSizes: function(imgElement){
-			var outside = imgElement.data('crop-image-outside');
+			var outer = imgElement.data('crop-image-outer');
 			var inner = imgElement.data('crop-image-inner');
 			var ratio = imgElement.data('crop-image-ratio')
 
@@ -112,15 +109,15 @@
 				ratio = 1;
 			}
 
-			var height = outside.width() * ratio;
+			var height = outer.width() * ratio;
 			inner.height(height);
 
-			imgElement.width(outside.width());
+			imgElement.width(outer.width());
 			imgElement.height('auto');
 			imgElement.css({
 				position: "absolute",
 				left: 0,
-				top: - (imgElement.height() - outside.height()) /2
+				top: - (imgElement.height() - outer.height()) /2
 			});
 
 			if ( height > imgElement.height() ){
@@ -128,7 +125,7 @@
 				imgElement.height(height);
 				imgElement.css({
 					position: "absolute",
-					left: - (imgElement.width() - outside.width()) /2,
+					left: - (imgElement.width() - outer.width()) /2,
 					top: 0
 				});
 			}
