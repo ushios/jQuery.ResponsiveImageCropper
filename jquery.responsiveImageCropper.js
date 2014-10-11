@@ -29,11 +29,13 @@
 
 				preload.onload = function(){
 					imgElement.css({
-						position: "absolute",
-						display: "block"
+						position: "absolute"
 					});
 					_this.targetElements.push(imgElement);
 					_this.croppingImageElement(imgElement);
+					imgElement.css({
+						display: "block"
+					});
 				}
 				preload.src = imgElement.attr('src');
 			});
